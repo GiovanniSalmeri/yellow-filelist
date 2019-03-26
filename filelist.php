@@ -56,6 +56,8 @@ class YellowFilelist {
                     default: return $m[0][1];
                 }
             }, $name);
+        } else {
+            return $name;
         }
     } 
 
@@ -75,7 +77,7 @@ class YellowFilelist {
         foreach ($dirs as $dir) {
             $desc = htmlspecialchars($this->decodeFilename((preg_replace("/^[\d\-]+/", "", $dir))));
             $this->output .= "<li class=\"directory\">".$desc."\n";
-            $this->fileDir($startDir."/".$dir, $startLoc."/".$dir, $exts);
+            $this->fileDir($startDir."/".$dir, $startLoc."/".$dir, $exts, null);
             $this->output .= "</li>\n";
         }
         natcasesort($files);
