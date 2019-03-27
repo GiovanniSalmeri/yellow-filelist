@@ -43,7 +43,7 @@ To display characters forbidden in filenames, use the following mnemonics prefix
 
 E.g. the filename `5-Quo vadis=q.pdf` will be displayed as **Quo vadis?**.
 
-But if a text file is found in the same folder and with the same name of the file to be listed but the extension `.text`, the content of this file (just one line) will we used as the text to be displayed. In this way forbidden characters can be used without resorting to the above encoding.
+But if a text file is found in the same folder, with the same name of the file to be listed and the extension `.text`, its content (just one line) will be displayed as the link text. In this way forbidden characters can be used without resorting to the above encoding.
 
 ## Settings
 
