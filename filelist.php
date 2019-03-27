@@ -24,6 +24,7 @@ class YellowFilelist {
         $this->output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExts, $collapse) = $this->yellow->toolbox->getTextArgs($text);
+            if ($filePath == "/") $filePath = "";
             $exts = preg_split("/[\s,]+/", $fileExts, 0, PREG_SPLIT_NO_EMPTY);
             if (empty($collapse)) $collapse = $this->yellow->system->get("filelistCollapse");
             $fileLoc = $this->yellow->system->get("filelistLocation").$filePath;
