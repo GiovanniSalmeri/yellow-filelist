@@ -62,12 +62,14 @@ class YellowFilelist {
     } 
 
     function fileDir($startDir, $startLoc, $exts, $collapse) {
+        define(META, "text");
         $dirHandle = opendir($startDir);
         $files = $dirs = [];
         while (($entry = readdir($dirHandle)) !== FALSE) {
-            if (is_file($startDir."/".$entry) && (!$exts || in_array($this->yellow->toolbox->getFileType($entry), $exts))) {
+            $entryType = $this->yellow->toolbox->getFileType($entry);
+            if (is_file($startDir.$entry) && $entryType != META && (!$exts || in_array($entryType, $exts))) {
                 $files[] = $entry;
-            } elseif (is_dir($startDir."/".$entry) && ($entry[0] != ".")) {
+            } elseif (is_dir($startDir.$entry) && ($entry[0] != ".")) {
                 $dirs[] = $entry;
             }
         }
@@ -77,12 +79,18 @@ class YellowFilelist {
         foreach ($dirs as $dir) {
             $desc = htmlspecialchars($this->decodeFilename((preg_replace("/^[\d\-]+/", "", $dir))));
             $this->output .= "<li class=\"directory\">".$desc."\n";
-            $this->fileDir($startDir."/".$dir, $startLoc."/".$dir, $exts, null);
+            $this->fileDir($startDir.$dir."/", $startLoc.$dir, $exts, null);
             $this->output .= "</li>\n";
         }
         natcasesort($files);
         foreach ($files as $file) {
-            $desc = htmlspecialchars($this->decodeFilename(pathinfo(preg_replace("/^[\d\-]+/", "", $file))["filename"]));
+            $metaHandle = @fopen($startDir."/".pathinfo($file)["filename"].".".META, "r");
+            if ($metaHandle) {
+                $desc = trim(fgets($metaHandle));
+                fclose($metaHandle);
+            } else {
+                $desc = htmlspecialchars($this->decodeFilename(pathinfo(preg_replace("/^[\d\-]+/", "", $file))["filename"]));
+            }
             $link = implode('/', array_map('rawurlencode', explode('/', $startLoc. "/".$file)));
             $this->output .= "<li class=\"file\"><a href=\"".$link."\">".$desc."</a>";
             if ($this->yellow->system->get("filelistShowType")) $this->output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";

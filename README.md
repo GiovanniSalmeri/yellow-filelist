@@ -43,13 +43,15 @@ To display characters forbidden in filenames, use the following mnemonics prefix
 
 E.g. the filename `5-Quo vadis=q.pdf` will be displayed as **Quo vadis?**.
 
+But if a text file is found in the same folder and with the same name of the file to be listed but the extension `.text`, the content of this file (just one line) will we used as the text to be displayed. In this way forbidden characters can be used without resorting to the above encoding.
+
 ## Settings
 
 The following settings can be configured in file `system/settings/system.ini`:
 
 `filelistDir` (default = `media/filelist/`) = base directory for files   
 `filelistLocation` (default = `/media/filelist/`) = base location for files   
-`filelistEncode` (default = `mnemo`) = use `mnemo`nics or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding) for forbidden characters   
+`filelistEncode` (default = `mnemo`) = use for forbidden characters `mnemo`nics, or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding), or `none`   
 `filelistCollapse` (default = `1`) = collapse the view of subfolders   
 `filelistShowType` (default = `0`) = show the type of each file   
 
