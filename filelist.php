@@ -26,7 +26,7 @@ class YellowFilelist {
             list($filePath, $fileExts, $collapse) = $this->yellow->toolbox->getTextArgs($text);
             $filePath = preg_replace("/\/$/", "", $filePath);
             $exts = preg_split("/[\s,]+/", $fileExts, 0, PREG_SPLIT_NO_EMPTY);
-            if (empty($collapse)) $collapse = $this->yellow->system->get("filelistCollapse");
+            if ($collapse == "") $collapse = $this->yellow->system->get("filelistCollapse");
             $fileLoc = $this->yellow->system->get("filelistLocation").$filePath;
             $filePath = $this->yellow->system->get("filelistDir").$filePath;
             if (is_dir($filePath)) {
@@ -69,7 +69,7 @@ class YellowFilelist {
             $desc = trim(fgets($metaHandle));
             fclose($metaHandle);
         } else {
-            $desc = htmlspecialchars($this->decodeFilename(preg_replace("/^[\d\-]+/", "", $filename)));
+            $desc = $this->decodeFilename(preg_replace("/^[\d\-]+/", "", $filename));
         }
         return $desc;
     }
@@ -91,7 +91,7 @@ class YellowFilelist {
         natcasesort($dirs);
         foreach ($dirs as $dir) {
             $desc = $this->getDesc($startDir, $dir);
-            $this->output .= "<li class=\"directory\">".$desc."\n";
+            $this->output .= "<li class=\"directory\">".htmlspecialchars($desc)."\n";
             $this->fileDir($startDir.$dir."/", $startLoc.$dir, $exts, null);
             $this->output .= "</li>\n";
         }
@@ -99,7 +99,7 @@ class YellowFilelist {
         foreach ($files as $file) {
             $desc = $this->getDesc($startDir, $file);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLoc. "/".$file)));
-            $this->output .= "<li class=\"file\"><a href=\"".$link."\">".$desc."</a>";
+            $this->output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($desc)."</a>";
             if ($this->yellow->system->get("filelistShowType")) $this->output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
             $this->output .= "</li>\n";
         }
