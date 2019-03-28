@@ -63,19 +63,19 @@ class YellowFilelist {
     } 
 
     function getDesc($startDir, $name) {
+        define(META, "text");
         $filename = pathinfo($name)["filename"];
         $metaHandle = @fopen($startDir."/".$filename.".".META, "r");
         if ($metaHandle) {
             $desc = trim(fgets($metaHandle));
             fclose($metaHandle);
         } else {
-            $desc = htmlspecialchars($this->decodeFilename(preg_replace("/^[\d\-]+/", "", $filename)));
+            $desc = $this->decodeFilename(preg_replace("/^[\d\-]+/", "", $filename));
         }
         return $desc;
     }
 
     function fileDir($startDir, $startLoc, $exts, $collapse) {
-        define(META, "text");
         $dirHandle = opendir($startDir);
         $files = $dirs = [];
         while (($entry = readdir($dirHandle)) !== FALSE) {
@@ -91,7 +91,7 @@ class YellowFilelist {
         natcasesort($dirs);
         foreach ($dirs as $dir) {
             $desc = $this->getDesc($startDir, $dir);
-            $this->output .= "<li class=\"directory\">".$desc."\n";
+            $this->output .= "<li class=\"directory\">".htmlspecialchars($desc)."\n";
             $this->fileDir($startDir.$dir."/", $startLoc.$dir, $exts, null);
             $this->output .= "</li>\n";
         }
@@ -99,7 +99,7 @@ class YellowFilelist {
         foreach ($files as $file) {
             $desc = $this->getDesc($startDir, $file);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLoc. "/".$file)));
-            $this->output .= "<li class=\"file\"><a href=\"".$link."\">".$desc."</a>";
+            $this->output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($desc)."</a>";
             if ($this->yellow->system->get("filelistShowType")) $this->output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
             $this->output .= "</li>\n";
         }
