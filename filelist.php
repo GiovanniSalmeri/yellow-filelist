@@ -27,7 +27,7 @@ class YellowFilelist {
             $filePath = preg_replace("/\/$/", "", $filePath);
             $exts = preg_split("/[\s,]+/", $fileExts, 0, PREG_SPLIT_NO_EMPTY);
             if ($collapse == "") $collapse = $this->yellow->system->get("filelistCollapse");
-            $fileLoc = $this->yellow->system->get("filelistLocation").$filePath;
+            $fileLoc = $this->yellow->system->get("serverBase").$this->yellow->system->get("filelistLocation").$filePath;
             $filePath = $this->yellow->system->get("filelistDir").$filePath;
             if (is_dir($filePath)) {
                 $this->fileDir($filePath, $fileLoc, $exts, $collapse);
