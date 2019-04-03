@@ -24,11 +24,12 @@ class YellowFilelist {
         $this->output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExts, $collapse) = $this->yellow->toolbox->getTextArgs($text);
-            $filePath = preg_replace("/\/$/", "", $filePath);
+            if (substr($filePath, -1) !== "/") $filePath = $filePath."/";
             $exts = preg_split("/[\s,]+/", $fileExts, 0, PREG_SPLIT_NO_EMPTY);
             if ($collapse == "") $collapse = $this->yellow->system->get("filelistCollapse");
             $fileLoc = $this->yellow->system->get("serverBase").$this->yellow->system->get("filelistLocation").$filePath;
             $filePath = $this->yellow->system->get("filelistDir").$filePath;
+
             if (is_dir($filePath)) {
                 $this->fileDir($filePath, $fileLoc, $exts, $collapse);
             }
@@ -92,7 +93,7 @@ class YellowFilelist {
         foreach ($dirs as $dir) {
             $desc = $this->getDesc($startDir, $dir);
             $this->output .= "<li class=\"directory\">".htmlspecialchars($desc)."\n";
-            $this->fileDir($startDir.$dir."/", $startLoc.$dir, $exts, null);
+            $this->fileDir($startDir.$dir."/", $startLoc.$dir."/", $exts, null);
             $this->output .= "</li>\n";
         }
         natcasesort($files);
