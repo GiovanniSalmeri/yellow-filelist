@@ -99,7 +99,7 @@ class YellowFilelist {
         natcasesort($files);
         foreach ($files as $file) {
             $desc = $this->getDesc($startDir, $file);
-            $link = implode('/', array_map('rawurlencode', explode('/', $startLoc. "/".$file)));
+            $link = implode('/', array_map('rawurlencode', explode('/', $startLoc. $file)));
             $this->output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($desc)."</a>";
             if ($this->yellow->system->get("filelistShowType")) $this->output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
             $this->output .= "</li>\n";
