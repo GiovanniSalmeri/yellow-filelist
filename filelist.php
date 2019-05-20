@@ -76,7 +76,7 @@ class YellowFilelist {
     }
 
     function fileDir($startDir, $startLoc, $exts, $collapse) {
-        define(META, "text");
+        define("META", "text");
         $dirHandle = opendir($startDir);
         $files = $dirs = [];
         while (($entry = readdir($dirHandle)) !== FALSE) {
