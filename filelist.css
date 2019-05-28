@@ -5,16 +5,16 @@ ul.filelist li span.filetype {
 }
 
 .collapsibleList li{
-    list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIhJREFUeNq0kdEJwzAMRM9C3sPgz25iMlBG6EAm2xg8iVxd4o+CaUM/ evAw6I5DyKHW+gDwdIojWGXO4ezKYM55SykhhLAkxxjSe99aa2dTYXAaC9T0C5uFjWaGTxKR68EP 0rfdbsP/a2bYeJ5v4ekZ1zj8jlBVxBgXOKfPHJt3Hty5/cGXAAMAtmhC80lDcscAAAAASUVORK5C YII=");
+    list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3C/svg%3E");
     cursor: auto;
 }
 
 li.collapsibleListOpen{
-    list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJJJREFUeNqUkVEKAyEMRGPQLy8h+NmbyB5oj9ADyd5G8BL+xmZaP0pD u9uBh+AMQ4yu1nojortSFCYrUQ5l9wjmnLeUEjnnTHLOyb33rbX2bCoILsMALb+gmdEoIvRNzPw6 6A/5t9koxmgCYwwb/jROm6+MIVjPr/DyBA88dI/kvacQggH38JFD846FK6c/+BBgANzWSNTsv+CT AAAAAElFTkSuQmCC");
+    list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3Cg stroke='%23000' stroke-width='14'%3E%3Cline x1='30' y1='75' x2='120' y2='75' /%3E%3C/g%3E%3C/svg%3E");
     cursor: pointer;
 }
 
 li.collapsibleListClosed{
-  list-style-image : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ bWFnZVJlYWR5ccllPAAAAKJJREFUeNqEkc0JxCAQhUfRg7EJweN2IikoJWxBkm4EexCvur4gi4ku O/Dw532O48i89y8ieje5Jk5zlKaz6RAArbW7MYYYYxNZa+Uxxj2EcGVyALsxCdF9B5gj4wgopW7r fiNf1fgzxFAbaa2/xrZt15hznuHRwKERWmZ+dGEJF7RnNFNKN7jPCx54tj6SEIKklJOwDx8cMh9o eNPfH/wIMABbu2PPHYUsbQAAAABJRU5ErkJggg==");
+  list-style-image : url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3Cg stroke='%23000' stroke-width='14'%3E%3Cline x1='30' y1='75' x2='120' y2='75' /%3E%3Cline x1='75' y1='30' x2='75' y2='120' /%3E%3C/g%3E%3C/svg%3E");
     cursor: pointer;
 }
