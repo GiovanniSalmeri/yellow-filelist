@@ -22,6 +22,8 @@ The following arguments are available, all but the first argument are optional:
 `Extensions` (default: `*`) = extensions of files to list, \* for all extensions; wrap multiple extensions into quotes   
 `Collapse` (default: `1`) = collapse the lists of subfolders  
 
+For collapsing the lists the extension uses [Collapsible Lists](http://code.iamkate.com/javascript/collapsible-lists/) by Kate Morley. It's licensed under the [CC0 1.0 Universal legal code](http://creativecommons.org/publicdomain/zero/1.0/legalcode).
+
 ## How names of files and folders are shown
 
 Trailing digits and hyphens in the names of files and folders are used for sorting, but not shown in the link text.
@@ -70,4 +72,4 @@ Embedding a list of files in the subfolder `docs` with various options:
 
 ## Developer
 
-Giovanni Salmeri.
+Giovanni Salmeri featuring Kate Morley.
