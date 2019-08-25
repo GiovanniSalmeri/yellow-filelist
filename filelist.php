@@ -63,8 +63,8 @@ class YellowFilelist {
         }
     } 
 
-    function getDesc($startDir, $name) {
-        $filename = pathinfo($name)["filename"];
+    function getDesc($startDir, $name, $isDir) {
+        $filename = $isDir ? pathinfo($name)["basename"] : pathinfo($name)["filename"];
         $metaHandle = @fopen($startDir."/".$filename.".".META, "r");
         if ($metaHandle) {
             $desc = trim(fgets($metaHandle));
@@ -91,14 +91,14 @@ class YellowFilelist {
         $this->output .= "<ul class=\"filelist".($collapse ? " collapsibleList" : "")."\">\n";
         natcasesort($dirs);
         foreach ($dirs as $dir) {
-            $desc = $this->getDesc($startDir, $dir);
+            $desc = $this->getDesc($startDir, $dir, true);
             $this->output .= "<li class=\"directory\">".htmlspecialchars($desc)."\n";
             $this->fileDir($startDir.$dir."/", $startLoc.$dir."/", $exts, null);
             $this->output .= "</li>\n";
         }
         natcasesort($files);
         foreach ($files as $file) {
-            $desc = $this->getDesc($startDir, $file);
+            $desc = $this->getDesc($startDir, $file, false);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLoc. $file)));
             $this->output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($desc)."</a>";
             if ($this->yellow->system->get("filelistShowType")) $this->output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
