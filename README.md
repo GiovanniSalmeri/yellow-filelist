@@ -56,6 +56,7 @@ The following settings can be configured in file `system/settings/system.ini`:
 `filelistEncode` (default = `mnemo`) = use for forbidden characters `mnemo`nics, or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding), or `none`   
 `filelistCollapse` (default = `1`) = collapse the view of subfolders   
 `filelistShowType` (default = `0`) = show the type of each file   
+`filelistKeepNumbers` (default = `0`) = keep leading numbers in descriptions   
 
 ## Example
 

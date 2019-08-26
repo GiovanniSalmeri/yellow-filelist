@@ -17,6 +17,7 @@ class YellowFilelist {
         $this->yellow->system->setDefault("filelistEncode", "mnemo");
         $this->yellow->system->setDefault("filelistCollapse", "1");
         $this->yellow->system->setDefault("filelistShowType", "0");
+        $this->yellow->system->setDefault("filelistKeepNumbers", "0");
     }
     
     // Handle page content of shortcut
@@ -70,7 +71,7 @@ class YellowFilelist {
             $desc = trim(fgets($metaHandle));
             fclose($metaHandle);
         } else {
-            $desc = $this->decodeFilename(preg_replace("/^[\d\-]+/", "", $filename));
+            $desc = $this->decodeFilename($this->yellow->system->get("filelistKeepNumbers") ? $filename : preg_replace("/^[\d\-]+/", "", $filename));
         }
         return $desc;
     }
