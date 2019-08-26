@@ -81,6 +81,7 @@ class YellowFilelist {
         $dirHandle = opendir($startDir);
         $files = $dirs = [];
         while (($entry = readdir($dirHandle)) !== FALSE) {
+            if ($entry[0] == ".") continue;
             $entryType = $this->yellow->toolbox->getFileType($entry);
             if (is_file($startDir.$entry) && $entryType != META && (!$exts || in_array($entryType, $exts))) {
                 $files[] = $entry;
