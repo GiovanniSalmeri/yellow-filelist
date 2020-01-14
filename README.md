@@ -1,4 +1,4 @@
-# Filelist 0.8.3
+# Filelist 0.8.9
 
 Show a list of files for download.
 
