@@ -1,11 +1,10 @@
 <?php
-// Filelist extension
-// Copyright (c) 2019 Giovanni Salmeri
+// Filelist extension, https://github.com/GiovanniSalmeri/yellow-filelist
+// Copyright (c) 2019-2021 Giovanni Salmeri
 // This file may be used and distributed under the terms of the public license.
 
 class YellowFilelist {
-    const VERSION = "0.8.9";
-    const TYPE = "feature";
+    const VERSION = "0.8.16";
     public $yellow;         //access to API
     public $output;
 
@@ -24,12 +23,12 @@ class YellowFilelist {
     public function onParseContentShortcut($page, $name, $text, $type) {
         $this->output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
-            list($filePath, $fileExts, $collapse) = $this->yellow->toolbox->getTextArgs($text);
+            list($filePath, $fileExts, $collapse) = $this->yellow->toolbox->getTextArguments($text);
             if (substr($filePath, -1) !== "/") $filePath = $filePath."/";
             $exts = preg_split("/[\s,]+/", $fileExts, 0, PREG_SPLIT_NO_EMPTY);
             if ($collapse == "") $collapse = $this->yellow->system->get("filelistCollapse");
             $fileLoc = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("filelistLocation").$filePath;
-            $filePath = $this->yellow->system->get("filelistDir").$filePath;
+            $filePath = $this->yellow->system->get("filelistDirectory").$filePath;
 
             if (is_dir($filePath)) {
                 $this->fileDir($filePath, $fileLoc, $exts, $collapse);
