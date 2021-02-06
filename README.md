@@ -52,7 +52,7 @@ Embedding a list of files in the subfolder `docs` with various options:
 
 ## Settings
 
-The following settings can be configured in file `system/settings/system.ini`:
+The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
 `filelistDir` (default = `media/filelist/`) = base directory for files   
 `filelistLocation` (default = `/media/filelist/`) = base location for files   
