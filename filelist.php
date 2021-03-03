@@ -11,7 +11,7 @@ class YellowFilelist {
     // Handle initialisation
     public function onLoad($yellow) {
         $this->yellow = $yellow;
-        $this->yellow->system->setDefault("filelistDir", "media/filelist/");
+        $this->yellow->system->setDefault("filelistDirectory", "media/filelist/");
         $this->yellow->system->setDefault("filelistLocation", "/media/filelist/");
         $this->yellow->system->setDefault("filelistEncode", "mnemo");
         $this->yellow->system->setDefault("filelistCollapse", "1");
