@@ -1,3 +1,5 @@
+// Filelist extension, https://github.com/GiovanniSalmeri/yellow-filelist
+
 "use strict";
 document.addEventListener("DOMContentLoaded", function() {
     CollapsibleLists.apply();
