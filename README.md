@@ -4,7 +4,7 @@ Show a list of files for download.
 
 ![Screenshot](filelist-screenshot.png?raw=true)
 
-## How to add a list of files
+## How to show a list of files
 
 Create a [filelist] shortcut.
 
@@ -39,11 +39,11 @@ But if a text file is found in the same folder, with the same name of the file t
 
 ## Example
 
-Embedding a list of all files in the base folder:
+Showing a list of all files in the base folder:
 
 `[filelist]`
 
-Embedding a list of files in the subfolder `docs` with various options:
+Showing a list of files in the subfolder `docs` with various options:
 
 `[filelist docs]`   
 `[filelist docs pdf]`   
