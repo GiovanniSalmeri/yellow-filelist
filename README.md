@@ -69,4 +69,4 @@ For collapsing the lists this extension uses [Collapsible Lists](http://code.iam
 
 ## Developer
 
-Giovanni Salmeri. [Get help](https://github.com/GiovanniSalmeri/yellow-filelist/issues).
+Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/)
