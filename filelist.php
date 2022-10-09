@@ -3,9 +3,8 @@
 
 class YellowFilelist {
     const VERSION = "0.8.17";
-    public $yellow;         //access to API
-    public $output;
     const META = "text";
+    public $yellow;         //access to API
 
     // Handle initialisation
     public function onLoad($yellow) {
@@ -19,7 +18,7 @@ class YellowFilelist {
     
     // Handle page content of shortcut
     public function onParseContentShortcut($page, $name, $text, $type) {
-        $this->output = null;
+        $output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExtensions, $collapse) = $this->yellow->toolbox->getTextArguments($text);
             if (substr($filePath, -1)!=="/") $filePath .= "/";
@@ -30,10 +29,10 @@ class YellowFilelist {
             $fileLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("filelistLocation").$filePath;
             $filePath = $this->yellow->lookup->findMediaDirectory("filelistLocation").$filePath;
             if ($this->yellow->lookup->isValidFile($filePath) && is_dir($filePath)) {
-                $this->fileDirectory($filePath, $fileLocation, $extensions, $collapse);
+                $output .= $this->fileDirectory($filePath, $fileLocation, $extensions, $collapse);
             }
         }
-        return $this->output;
+        return $output;
     }
 
     // Return decoded file name
@@ -66,6 +65,7 @@ class YellowFilelist {
 
     // Recursively return directory list
     private function fileDirectory($startDirectory, $startLocation, $extensions, $collapse) {
+        $output = null;
         $directoryHandle = opendir($startDirectory);
         $files = $directories = [];
         while (($entry = readdir($directoryHandle))!==false) {
@@ -78,23 +78,24 @@ class YellowFilelist {
             }
         }
         closedir($directoryHandle);
-        $this->output .= "<ul class=\"filelist".($collapse ? " collapsibleList" : "")."\">\n";
+        $output .= "<ul class=\"filelist".($collapse ? " collapsibleList" : "")."\">\n";
         natcasesort($directories);
         foreach ($directories as $directory) {
             $description = $this->getDescription($startDirectory, $directory, true);
-            $this->output .= "<li class=\"directory\">".htmlspecialchars($description)."\n";
-            $this->fileDirectory($startDirectory.$directory."/", $startLocation.$directory."/", $extensions, null);
-            $this->output .= "</li>\n";
+            $output .= "<li class=\"directory\">".htmlspecialchars($description)."\n";
+            $output .= $this->fileDirectory($startDirectory.$directory."/", $startLocation.$directory."/", $extensions, null);
+            $output .= "</li>\n";
         }
         natcasesort($files);
         foreach ($files as $file) {
             $description = $this->getDescription($startDirectory, $file, false);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLocation. $file)));
-            $this->output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($description)."</a>";
-            if ($this->yellow->system->get("filelistShowType")) $this->output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
-            $this->output .= "</li>\n";
+            $output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($description)."</a>";
+            if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
+            $output .= "</li>\n";
         }
-        $this->output .= "</ul>\n";
+        $output .= "</ul>\n";
+        return $output;
    }
     
     // Handle page extra data
