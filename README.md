@@ -54,7 +54,7 @@ Showing a list of files in the subfolder `docs` with various options:
 
 The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
-`FilelistLocation` (default = `/media/filelist/`) = base location for files   
+`FilelistLocation` (default = `/media/filelist`) = base location for files   
 `FilelistEncode` (default = `mnemo`) = use for forbidden characters `mnemo`nics, or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding), or `none`   
 `FilelistCollapse` (default = `1`) = collapse the view of subfolders   
 `FilelistShowType` (default = `0`) = show the type of each file   
