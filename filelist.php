@@ -36,26 +36,15 @@ class YellowFilelist {
 
     // Return decoded file name
     private function decodeFilename($name) {
-        if ($this->yellow->system->get("filelistEncode")=="percent") {
-            //%3D%3C%3E%3A%22%5C%2F%7C%3F%2A
-            //=<>:"\/|?*
+        $filelistEncode = $this->yellow->system->get("filelistEncode");
+        if ($filelistEncode=="percent") {
             return rawurldecode($name);
-        } elseif ($this->yellow->system->get("filelistEncode")=="mnemo") {
-            return preg_replace_callback("/=./", function($m) {
-                switch ($m[0]) {
-                    case "==": return "="; break;
-                    case "=l": return "<"; break;
-                    case "=g": return ">"; break;
-                    case "=c": return ":"; break;
-                    case "=d": return "\""; break;
-                    case "=s": return "/"; break;
-                    case "=b": return "\\"; break;
-                    case "=p": return "|"; break;
-                    case "=q": return "?"; break;
-                    case "=a": return "*"; break;
-                    default: return $m[0][1];
-                }
-            }, $name);
+        } elseif ($filelistEncode=="mnemo") {
+            return str_replace(
+                [ "=l", "=g", "=c", "=d", "=s", "=b", "=p", "=q", "=a", "==" ],
+                [ "<", ">", ":", "\"", "/", "\\", "|", "?", "*", "=" ],
+                $name
+            );
         } else {
             return $name;
         }
