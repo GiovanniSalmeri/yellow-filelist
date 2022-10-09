@@ -1,4 +1,4 @@
-# Filelist 0.8.16
+# Filelist 0.8.17
 
 Show a list of files for download.
 
@@ -54,7 +54,6 @@ Showing a list of files in the subfolder `docs` with various options:
 
 The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
-`FilelistDir` (default = `media/filelist/`) = base directory for files   
 `FilelistLocation` (default = `/media/filelist/`) = base location for files   
 `FilelistEncode` (default = `mnemo`) = use for forbidden characters `mnemo`nics, or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding), or `none`   
 `FilelistCollapse` (default = `1`) = collapse the view of subfolders   
