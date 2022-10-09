@@ -40,11 +40,10 @@ class YellowFilelist {
         if ($filelistEncode=="percent") {
             return rawurldecode($name);
         } elseif ($filelistEncode=="mnemo") {
-            return str_replace(
+            return strtr($name, array_combine(
                 [ "=l", "=g", "=c", "=d", "=s", "=b", "=p", "=q", "=a", "==" ],
-                [ "<", ">", ":", "\"", "/", "\\", "|", "?", "*", "=" ],
-                $name
-            );
+                [ "<", ">", ":", "\"", "/", "\\", "|", "?", "*", "=" ]
+            ));
         } else {
             return $name;
         }
@@ -67,7 +66,7 @@ class YellowFilelist {
     private function fileDirectory($startDirectory, $startLocation, $extensions, $collapse) {
         $directoryHandle = opendir($startDirectory);
         $files = $directories = [];
-        while (($entry = readdir($directoryHandle))!==FALSE) {
+        while (($entry = readdir($directoryHandle))!==false) {
             if ($entry[0]==".") continue;
             $entryType = $this->yellow->toolbox->getFileType($entry);
             if (is_file($startDirectory.$entry) && $entryType!=$this::META && (!$extensions || in_array($entryType, $extensions))) {
