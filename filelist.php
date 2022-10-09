@@ -23,6 +23,7 @@ class YellowFilelist {
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExtensions, $collapse) = $this->yellow->toolbox->getTextArguments($text);
             if (substr($filePath, -1)!=="/") $filePath .= "/";
+            if (substr($filePath, 0)!=="/") $filePath = "/".$filePath;
             $extensions = preg_split("/\s*,\s*/", $fileExtensions, 0, PREG_SPLIT_NO_EMPTY);
             if ($collapse=="") $collapse = $this->yellow->system->get("filelistCollapse");
             $fileLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("filelistLocation").$filePath;
