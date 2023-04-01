@@ -4,6 +4,10 @@ Show a list of files for download.
 
 ![Screenshot](filelist-screenshot.png?raw=true)
 
+## How to install an extension
+
+[Download ZIP file](https://github.com/GiovanniSalmeri/yellow-filelist/archive/main.zip) and copy it into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
+
 ## How to show a list of files
 
 Create a [filelist] shortcut.
@@ -37,7 +41,7 @@ E.g. the filename `5-Quo vadis=q.pdf` will be displayed as **Quo vadis?**.
 
 But if a text file is found in the same folder, with the same name of the file to be listed and the extension `.text`, its content (just one line) will be displayed as the link text. In this way forbidden characters can be used without resorting to the above encoding.
 
-## Example
+## Examples
 
 Showing a list of all files in the base folder:
 
@@ -60,12 +64,10 @@ The following settings can be configured in file `system/extensions/yellow-syste
 `FilelistShowType` (default = `0`) = show the type of each file   
 `FilelistKeepNumbers` (default = `0`) = keep leading numbers in descriptions   
 
-## Installation
+## Acknowledgements
 
-[Download extension](https://github.com/GiovanniSalmeri/yellow-filelist/archive/main.zip) and copy zip file into your `system/extensions` folder. Right click if you use Safari.
-
-For collapsing the lists this extension uses [Collapsible Lists](https://web.archive.org/web/20210302222959/http://code.iamkate.com/javascript/collapsible-lists/) by Kate Morley.
+This extension includes [Collapsible Lists](https://web.archive.org/web/20210302222959/http://code.iamkate.com/javascript/collapsible-lists/) by Kate Morley. Thank you for the good work.
 
 ## Developer
 
-Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/)
+Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/).
