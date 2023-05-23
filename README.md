@@ -14,9 +14,9 @@ Create a [filelist] shortcut.
 
 The following arguments are available, all but the first argument are optional:
 
-`Folder` (default: `/`) = folder under `media/filelist` of files and subfolders to show  
-`Extensions` (default: `*`) = extensions of files to list, \* for all extensions; wrap multiple extensions into quotes   
-`Collapse` (default: `1`) = collapse the lists of subfolders  
+`Folder` = folder under `media/filelist` of files and subfolders to show  
+`Extensions` = extensions of files to list, \* for all extensions; wrap multiple extensions into quotes   
+`Collapse` = collapse the lists of subfolders  
 
 ## How names of files and folders are shown
 
@@ -58,11 +58,11 @@ Showing a list of files in the subfolder `docs` with various options:
 
 The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
-`FilelistLocation` (default = `/media/filelist`) = base location for files   
-`FilelistEncode` (default = `mnemo`) = use for forbidden characters `mnemo`nics, or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding), or `none`   
-`FilelistCollapse` (default = `1`) = collapse the view of subfolders   
-`FilelistShowType` (default = `0`) = show the type of each file   
-`FilelistKeepNumbers` (default = `0`) = keep leading numbers in descriptions   
+`FilelistLocation` = base location for files   
+`FilelistEncode` = use for forbidden characters `mnemo`nics, or [`percent` encoding](https://en.wikipedia.org/wiki/Percent-encoding), or `none`   
+`FilelistCollapse` = collapse the view of subfolders   
+`FilelistShowType` = show the type of each file   
+`FilelistKeepNumbers` = keep leading numbers in descriptions   
 
 ## Acknowledgements
 
