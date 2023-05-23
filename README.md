@@ -1,6 +1,6 @@
 # Filelist 0.8.17
 
-Show a list of files for download.
+List of files for download.
 
 ![Screenshot](filelist-screenshot.png?raw=true)
 
@@ -12,7 +12,7 @@ Show a list of files for download.
 
 Create a [filelist] shortcut.
 
-The following arguments are available, all but the first argument are optional:
+The following arguments are available, all are optional:
 
 `Folder` = folder under `media/filelist` of files and subfolders to show  
 `Extensions` = extensions of files to list, \* for all extensions; wrap multiple extensions into quotes   
@@ -37,9 +37,9 @@ To display characters forbidden in filenames, use the following mnemonics prefix
 | \| | **p**ipe | =p |
 | = | equal | == |
 
-E.g. the filename `5-Quo vadis=q.pdf` will be displayed as **Quo vadis?**.
+For example the filename `5-Quo vadis=q.pdf` will be displayed as **Quo vadis?**.
 
-But if a text file is found in the same folder, with the same name of the file to be listed and the extension `.text`, its content (just one line) will be displayed as the link text. In this way forbidden characters can be used without resorting to the above encoding.
+If a text file is found in the same folder, with the same name of the file to be listed and the extension `.text`, its content (just one line) will be displayed as the link text. In this way forbidden characters can be used without resorting to the above encoding.
 
 ## Examples
 
