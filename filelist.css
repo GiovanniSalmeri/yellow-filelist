@@ -5,18 +5,43 @@ ul.filelist li span.filetype {
     text-transform: uppercase;
     color: red;
 }
-
-.collapsibleList li{
-    list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3C/svg%3E");
+ul.filelist-collapsible li {
+    list-style: none;
     cursor: auto;
 }
-
-li.collapsibleListOpen{
-    list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3Cg stroke='%23000' stroke-width='14'%3E%3Cline x1='30' y1='75' x2='120' y2='75' /%3E%3C/g%3E%3C/svg%3E");
+ul.filelist-collapsible li.filelist-directory > button {
+    font: inherit;
+    color: inherit;
     cursor: pointer;
+    text-align: inherit;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
 }
-
-li.collapsibleListClosed{
-  list-style-image : url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3Cg stroke='%23000' stroke-width='14'%3E%3Cline x1='30' y1='75' x2='120' y2='75' /%3E%3Cline x1='75' y1='30' x2='75' y2='120' /%3E%3C/g%3E%3C/svg%3E");
-    cursor: pointer;
+ul.filelist-collapsible li > span::before,
+ul.filelist-collapsible li > button::before {
+    padding-right: 8px;
+}
+ul.filelist-collapsible li.filelist-file > span::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3C/svg%3E");
+}
+ul.filelist-collapsible li.filelist-directory > button[aria-expanded="true"]::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3Cg stroke='%23000' stroke-width='14'%3E%3Cline x1='30' y1='75' x2='120' y2='75' /%3E%3C/g%3E%3C/svg%3E");
+}
+ul.filelist-collapsible li.filelist-directory > button[aria-expanded="false"]::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3Cg stroke='%23000' stroke-width='14'%3E%3Cline x1='30' y1='75' x2='120' y2='75' /%3E%3Cline x1='75' y1='30' x2='75' y2='120' /%3E%3C/g%3E%3C/svg%3E");
+}
+ul.filelist-collapsible ul {
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+}
+ul.filelist-collapsible ul[aria-hidden="true"] {
+    visibility: hidden;
+    opacity: 0;
+}
+ul.filelist-collapsible ul[aria-hidden="false"] {
+    visibility: visible;
+    opacity: 1;
 }

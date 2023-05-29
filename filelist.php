@@ -78,11 +78,11 @@ class YellowFilelist {
             }
         }
         closedir($directoryHandle);
-        $output .= "<ul class=\"filelist".($collapse ? " collapsibleList" : "")."\">\n";
+        $output .= "<ul class=\"filelist".($collapse ? " filelist-collapsible" : "")."\">\n";
         natcasesort($directories);
         foreach ($directories as $directory) {
             $description = $this->getDescription($startDirectory, $directory, true);
-            $output .= "<li class=\"directory\">".htmlspecialchars($description)."\n";
+            $output .= "<li class=\"filelist-directory\"><span>".htmlspecialchars($description)."</span>\n";
             $output .= $this->fileDirectory($startDirectory.$directory."/", $startLocation.$directory."/", $extensions, null);
             $output .= "</li>\n";
         }
@@ -90,8 +90,8 @@ class YellowFilelist {
         foreach ($files as $file) {
             $description = $this->getDescription($startDirectory, $file, false);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLocation. $file)));
-            $output .= "<li class=\"file\"><a href=\"".$link."\">".htmlspecialchars($description)."</a>";
-            if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
+            $output .= "<li class=\"filelist-file\"><span><a href=\"".$link."\">".htmlspecialchars($description)."</a></span>";
+            if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filelist-filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
             $output .= "</li>\n";
         }
         $output .= "</ul>\n";

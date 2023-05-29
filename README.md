@@ -1,4 +1,4 @@
-# Filelist 0.8.17
+# Filelist 0.8.18
 
 List of files for download.
 
@@ -63,10 +63,6 @@ The following settings can be configured in file `system/extensions/yellow-syste
 `FilelistCollapse` = collapse the view of subfolders   
 `FilelistShowType` = show the type of each file   
 `FilelistKeepNumbers` = keep leading numbers in descriptions   
-
-## Acknowledgements
-
-This extension includes [Collapsible Lists](https://web.archive.org/web/20210302222959/http://code.iamkate.com/javascript/collapsible-lists/) by Kate Morley. Thank you for the good work.
 
 ## Developer
 
