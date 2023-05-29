@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     lis.forEach(function(li, i) {
         var liSpan = li.firstChild;
         var ul = liSpan.nextElementSibling;
-        var id = "filelist-panel-"+i;                        
+        var id = "filelist-panel-"+i;
         var button = document.createElement("button");
         button.textContent = liSpan.textContent;
         button.setAttribute("aria-expanded", "false");
