@@ -89,8 +89,8 @@ class YellowFilelist {
         natcasesort($files);
         foreach ($files as $file) {
             $description = $this->getDescription($startDirectory, $file, false);
-            $link = implode('/', array_map('rawurlencode', explode('/', $startLocation. $file)));
-            $output .= "<li class=\"filelist-file\"><span><a href=\"".$link."\">".htmlspecialchars($description)."</a></span>";
+            $link = implode('/', array_map('rawurlencode', explode('/', $startLocation.$file)));
+            $output .= "<li class=\"filelist-file\"><span><a href=\"".htmlspecialchars($link)."\">".htmlspecialchars($description)."</a></span>";
             if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filelist-filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
             $output .= "</li>\n";
         }
