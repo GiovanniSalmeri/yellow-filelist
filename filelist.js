@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         this.setAttribute("aria-expanded", !close);
         ul.setAttribute("aria-hidden", close); 
         do {
-            ul.style.maxHeight = (parseInt(ul.style.maxHeight)+(ulHeight*(close ? -1 : 1)))+"px";
+            ul.style.maxHeight = parseInt(ul.style.maxHeight)+ulHeight*(close ? -1 : 1)+"px";
             ul = ul.parentElement.parentElement;
         } while (!ul.classList.contains("filelist-collapsible"));
     }
