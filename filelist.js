@@ -20,18 +20,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function toggle() {
         var ul = this.nextElementSibling;
-        if (this.getAttribute("aria-expanded")=="true") {
-            this.setAttribute("aria-expanded", "false");
-            ul.setAttribute("aria-hidden", "true"); 
-            ul.style.maxHeight = 0;
-        } else {
-            this.setAttribute("aria-expanded", "true");
-            ul.setAttribute("aria-hidden", "false"); 
-            var ulHeight = ul.scrollHeight;
-            do {
-                ul.style.maxHeight = (parseInt(ul.style.maxHeight)+ulHeight)+"px";
-                ul = ul.parentElement.parentElement;
-            } while (!ul.classList.contains("filelist-collapsible"));
-        }
+        var ulHeight = ul.scrollHeight;
+        var close = this.getAttribute("aria-expanded")=="true";
+        this.setAttribute("aria-expanded", !close);
+        ul.setAttribute("aria-hidden", close); 
+        do {
+            ul.style.maxHeight = (parseInt(ul.style.maxHeight)+(ulHeight*(close ? -1 : 1)))+"px";
+            ul = ul.parentElement.parentElement;
+        } while (!ul.classList.contains("filelist-collapsible"));
     }
 });
