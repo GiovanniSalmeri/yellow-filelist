@@ -1,13 +1,23 @@
 /* Filelist extension, https://github.com/GiovanniSalmeri/yellow-filelist */
 
+/* General */
+
+ul.filelist {
+    list-style-type: disc;
+}
 ul.filelist li span.filetype {
     font-size: 80%;
     text-transform: uppercase;
     color: red;
 }
+
+/* Collapsible */
+
+ul.filelist-collapsible {
+    padding-inline-start: 20px;
+}
 ul.filelist-collapsible li {
-    list-style: none;
-    cursor: auto;
+    list-style-type: none;
 }
 ul.filelist-collapsible li.filelist-directory > button {
     font: inherit;
@@ -22,7 +32,7 @@ ul.filelist-collapsible li.filelist-directory > button {
 }
 ul.filelist-collapsible li > span::before,
 ul.filelist-collapsible li > button::before {
-    padding-right: 8px;
+    padding-inline-end: 8px;
 }
 ul.filelist-collapsible li.filelist-file > span::before {
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 154 154' height='0.8em' width='0.8em'%3E%3Crect x='7' y='7' rx='30' ry='30' width='140' height='140' stroke-width='14' stroke='%23b4b4b4' fill='%23f3f3f3' /%3E%3C/svg%3E");
@@ -37,7 +47,8 @@ ul.filelist-collapsible ul {
     transition: 0.3s ease-in-out;
     overflow: hidden;
 }
-ul.filelist-collapsible ul[aria-hidden="true"] {
+ul.filelist-collapsible ul[aria-hidden="true"],
+ul.filelist-collapsible ul[aria-hidden="true"] ul {
     visibility: hidden;
     opacity: 0;
 }
