@@ -2,7 +2,7 @@
 
 List of files for download.
 
-![Screenshot](filelist-screenshot.png?raw=true)
+![Screenshot](filelist-screenshot.png)
 
 ## How to install an extension
 
