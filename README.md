@@ -2,7 +2,7 @@
 
 List of files for download.
 
-![Screenshot](filelist-screenshot.png)
+<p align="center"><img src="SCREENSHOT.png" alt="Screenshot"></p>
 
 ## How to install an extension
 
@@ -39,7 +39,7 @@ To display characters forbidden in filenames, use the following mnemonics prefix
 
 For example the filename `5-Quo vadis=q.pdf` will be displayed as **Quo vadis?**.
 
-If a text file is found in the same folder, with the same name of the file to be listed and the extension `.text`, its content (just one line) will be displayed as the link text. In this way forbidden characters can be used without resorting to the above encoding.
+If a text file is found in the same folder, with the same name of the file to be listed and the extension `.text`, its content (just one line) will be displayed as the link text. In this way, the link text will not be drawn from the filename and forbidden characters can be used without resorting to the above encoding.
 
 ## Examples
 
