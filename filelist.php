@@ -41,10 +41,8 @@ class YellowFilelist {
         if ($filelistEncode=="percent") {
             return rawurldecode($name);
         } elseif ($filelistEncode=="mnemo") {
-            return strtr($name, array_combine(
-                [ "=l", "=g", "=c", "=d", "=s", "=b", "=p", "=q", "=a", "==" ],
-                [ "<", ">", ":", "\"", "/", "\\", "|", "?", "*", "=" ]
-            ));
+            $replacePairs = ["=l"=>"<", "=g"=>">", "=c"=>":", "=d"=>"\"", "=s"=>"/", "=b"=>"\\", "=p"=>"|", "=q"=>"?", "=a"=>"*", "=="=>"="];
+            return strtr($name, $replacePairs);
         } else {
             return $name;
         }
