@@ -2,14 +2,14 @@
 // Filelist extension, https://github.com/GiovanniSalmeri/yellow-filelist
 
 class YellowFilelist {
-    const VERSION = "0.8.17";
+    const VERSION = "0.9.1";
     const META = "text";
     public $yellow;         //access to API
 
     // Handle initialisation
     public function onLoad($yellow) {
         $this->yellow = $yellow;
-        $this->yellow->system->setDefault("filelistLocation", "/media/filelist");
+        $this->yellow->system->setDefault("filelistLocation", "/media/filelist/");
         $this->yellow->system->setDefault("filelistEncode", "mnemo");
         $this->yellow->system->setDefault("filelistCollapse", "1");
         $this->yellow->system->setDefault("filelistShowType", "0");
@@ -17,12 +17,12 @@ class YellowFilelist {
     }
 
     // Handle page content of shortcut
-    public function onParseContentShortcut($page, $name, $text, $type) {
+    public function onParseContentElement($page, $name, $text, $attributes, $type) {
         $output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExtensions, $collapse) = $this->yellow->toolbox->getTextArguments($text);
             if (substr($filePath, -1)!=="/") $filePath .= "/";
-            if (substr($filePath, 0)!=="/") $filePath = "/".$filePath;
+            if (substr($filePath, 0)=="/") $filePath = substr($filePath, 1);
             $filePath = $this->yellow->lookup->normalisePath($filePath);
             $extensions = preg_split("/\s*,\s*/", $fileExtensions, 0, PREG_SPLIT_NO_EMPTY);
             if ($collapse=="") $collapse = $this->yellow->system->get("filelistCollapse");
@@ -100,9 +100,9 @@ class YellowFilelist {
     public function onParsePageExtra($page, $name) {
         $output = null;
         if ($name=="header") {
-            $extensionLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreExtensionLocation");
-            $output .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$extensionLocation}filelist.css\" />\n";
-            $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$extensionLocation}filelist.js\"></script>\n";
+            $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
+            $output .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$assetLocation}filelist.css\" />\n";
+            $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$assetLocation}filelist.js\"></script>\n";
         }
         return $output;
     }
