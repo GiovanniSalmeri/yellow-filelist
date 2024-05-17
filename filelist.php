@@ -16,7 +16,7 @@ class YellowFilelist {
         $this->yellow->system->setDefault("filelistKeepNumbers", "0");
     }
 
-    // Handle page content of shortcut
+    // Handle page content element
     public function onParseContentElement($page, $name, $text, $attributes, $type) {
         $output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
