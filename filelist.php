@@ -21,6 +21,7 @@ class YellowFilelist {
         $output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExtensions, $collapse) = $this->yellow->toolbox->getTextArguments($text);
+// echo "!!!".$fileExtensions."+++"; // OK
             if (substr($filePath, -1)!=="/") $filePath .= "/";
             if (substr($filePath, 0)=="/") $filePath = substr($filePath, 1);
             $filePath = $this->yellow->lookup->normalisePath($filePath);
@@ -88,8 +89,8 @@ class YellowFilelist {
         foreach ($files as $file) {
             $description = $this->getDescription($startDirectory, $file, false);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLocation.$file)));
-            $output .= "<li class=\"filelist-file\"><span><a href=\"".htmlspecialchars($link)."\">".htmlspecialchars($description)."</a></span>";
-            if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filelist-filetype\">".$this->yellow->toolbox->getFileType($entry)."</span>";
+            $output .= "<li class=\"filelist-file\"><span class=\"filelist-basename\"><a href=\"".htmlspecialchars($link)."\">".htmlspecialchars($description)."</a></span>";
+            if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filelist-extension\">".$this->yellow->toolbox->getFileType($file)."</span>";
             $output .= "</li>\n";
         }
         $output .= "</ul>\n";
