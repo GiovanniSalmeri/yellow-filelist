@@ -21,7 +21,6 @@ class YellowFilelist {
         $output = null;
         if ($name=="filelist" && ($type=="block" || $type=="inline")) {
             list($filePath, $fileExtensions, $collapse) = $this->yellow->toolbox->getTextArguments($text);
-// echo "!!!".$fileExtensions."+++"; // OK
             if (substr($filePath, -1)!=="/") $filePath .= "/";
             if (substr($filePath, 0)=="/") $filePath = substr($filePath, 1);
             $filePath = $this->yellow->lookup->normalisePath($filePath);
