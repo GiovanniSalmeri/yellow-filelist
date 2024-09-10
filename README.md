@@ -15,7 +15,7 @@ Create a [filelist] shortcut.
 The following arguments are available, all are optional:
 
 `Folder` = folder under `media/filelist` of files and subfolders to show  
-`Extensions` = extensions of files to list, \* for all extensions; wrap multiple extensions into quotes   
+`Extensions` = extensions of files to list, - for all extensions; separate multiple extensions with commas without spaces  
 `Collapse` = collapse the lists of subfolders  
 
 ## How names of files and folders are shown
@@ -47,12 +47,18 @@ Showing a list of all files in the base folder:
 
 `[filelist]`
 
+Showing a list of all files in the base folder with various options:
+
+`[filelist / pdf]`   
+`[filelist / pdf,odt]`   
+`[filelist / - 0]`   
+
 Showing a list of files in the subfolder `docs` with various options:
 
 `[filelist docs]`   
 `[filelist docs pdf]`   
-`[filelist docs "pdf odt"]`   
-`[filelist docs * 0]`   
+`[filelist docs pdf,odt]`   
+`[filelist docs - 0]`   
 
 ## Settings
 
