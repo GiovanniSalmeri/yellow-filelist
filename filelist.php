@@ -12,7 +12,7 @@ class YellowFilelist {
         $this->yellow->system->setDefault("filelistLocation", "/media/filelist/");
         $this->yellow->system->setDefault("filelistEncode", "mnemo");
         $this->yellow->system->setDefault("filelistCollapse", "1");
-        $this->yellow->system->setDefault("filelistTemplate", "@description");
+        $this->yellow->system->setDefault("filelistMetaData", "");
         $this->yellow->system->setDefault("filelistKeepNumbers", "0");
     }
 
@@ -88,12 +88,12 @@ class YellowFilelist {
         foreach ($files as $file) {
             $description = $this->getDescription($startDirectory, $file, false);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLocation.$file)));
-            $template = $this->yellow->system->get("filelistTemplate");
-            $template = preg_replace("/@description/i", $description, $template);
-            $template = preg_replace("/@type/i", $this->yellow->toolbox->getFileType($file), $template);
-            $template = preg_replace("/@size/i", $this->formatFileSize($startDirectory.$file), $template);
-            $template = preg_replace("/@date/i", $this->yellow->language->getDateFormatted($this->yellow->toolbox->getFileModified($startDirectory.$file), $this->yellow->language->getTextHtml("coreDateFormatLong")), $template);
-            $output .= "<li class=\"filelist-file\"><span class=\"filelist-basename\"><a href=\"".htmlspecialchars($link)."\"><span class=\"filelist-template\">".htmlspecialchars($template)."</span></a></span>";
+            $metaData = $this->yellow->system->get("filelistMetaData");
+            $metaData = preg_replace("/@type/i", $this->yellow->toolbox->getFileType($file), $metaData);
+            $metaData = preg_replace("/@size/i", $this->formatFileSize($startDirectory.$file), $metaData);
+            $metaData = preg_replace("/@date/i", $this->yellow->language->getDateFormatted($this->yellow->toolbox->getFileModified($startDirectory.$file), $this->yellow->language->getTextHtml("coreDateFormatLong")), $metaData);
+            $output .= "<li class=\"filelist-file\"><span class=\"filelist-basename\"><a href=\"".htmlspecialchars($link)."\">".htmlspecialchars($description)."</a></span>";
+            if ($this->yellow->system->get("filelistMetaData")) $output .= "&nbsp;<span class=\"filelist-meta\">".htmlspecialchars($metaData)."</span>";
             $output .= "</li>\n";
         }
         $output .= "</ul>\n";

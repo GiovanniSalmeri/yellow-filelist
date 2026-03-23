@@ -5,7 +5,7 @@
 ul.filelist {
     list-style-type: disc;
 }
-ul.filelist li span.filelist-template {
+ul.filelist li span.filelist-meta {
     font-size: 80%;
     text-transform: uppercase;
     color: red;
