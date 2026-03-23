@@ -12,7 +12,7 @@ class YellowFilelist {
         $this->yellow->system->setDefault("filelistLocation", "/media/filelist/");
         $this->yellow->system->setDefault("filelistEncode", "mnemo");
         $this->yellow->system->setDefault("filelistCollapse", "1");
-        $this->yellow->system->setDefault("filelistShowType", "0");
+        $this->yellow->system->setDefault("filelistTemplate", "@description");
         $this->yellow->system->setDefault("filelistKeepNumbers", "0");
     }
 
@@ -88,13 +88,32 @@ class YellowFilelist {
         foreach ($files as $file) {
             $description = $this->getDescription($startDirectory, $file, false);
             $link = implode('/', array_map('rawurlencode', explode('/', $startLocation.$file)));
-            $output .= "<li class=\"filelist-file\"><span class=\"filelist-basename\"><a href=\"".htmlspecialchars($link)."\">".htmlspecialchars($description)."</a></span>";
-            if ($this->yellow->system->get("filelistShowType")) $output .= " <span class=\"filelist-extension\">".$this->yellow->toolbox->getFileType($file)."</span>";
+            $template = $this->yellow->system->get("filelistTemplate");
+            $template = preg_replace("/@description/i", $description, $template);
+            $template = preg_replace("/@type/i", $this->yellow->toolbox->getFileType($file), $template);
+            $template = preg_replace("/@size/i", $this->formatFileSize($startDirectory.$file), $template);
+            $template = preg_replace("/@date/i", $this->yellow->language->getDateFormatted($this->yellow->toolbox->getFileModified($startDirectory.$file), $this->yellow->language->getTextHtml("coreDateFormatLong")), $template);
+            $output .= "<li class=\"filelist-file\"><span class=\"filelist-basename\"><a href=\"".htmlspecialchars($link)."\"><span class=\"filelist-template\">".htmlspecialchars($template)."</span></a></span>";
             $output .= "</li>\n";
         }
         $output .= "</ul>\n";
         return $output;
    }
+
+    // Return human-readable file size
+    private function formatFileSize($file) {
+        $fileSize = $this->yellow->toolbox->getFileSize($file);
+        if ($fileSize < 1024) {
+            $fileSize = $fileSize." Bytes";
+        } elseif (($fileSize < 1048576) && ($fileSize > 1023)) {
+            $fileSize = round($fileSize / 1024, 1)." KB";
+        } elseif (($fileSize < 1073741824) && ($fileSize > 1048575)) {
+            $fileSize = round($fileSize / 1048576, 1)." MB";
+        } else {
+            $fileSize = round($fileSize / 1073741824, 1)." GB";
+        }
+        return $fileSize;
+    }
 
     // Handle page extra data
     public function onParsePageExtra($page, $name) {
