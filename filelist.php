@@ -2,7 +2,7 @@
 // Filelist extension, https://github.com/GiovanniSalmeri/yellow-filelist
 
 class YellowFilelist {
-    const VERSION = "0.9.1";
+    const VERSION = "1.0.0";
     const META = "text";
     public $yellow;         //access to API
 
@@ -120,8 +120,8 @@ class YellowFilelist {
         $output = null;
         if ($name=="header") {
             $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
-            $output .= "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$assetLocation}filelist.css\" />\n";
-            $output .= "<script type=\"text/javascript\" defer=\"defer\" src=\"{$assetLocation}filelist.js\"></script>\n";
+            $output .= "<link rel=\"stylesheet\" media=\"all\" href=\"{$assetLocation}filelist.css\" />\n";
+            $output .= "<script defer=\"defer\" src=\"{$assetLocation}filelist.js\"></script>\n";
         }
         return $output;
     }
